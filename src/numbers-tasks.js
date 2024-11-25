@@ -50,7 +50,7 @@ function getCircleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-  return Math.round((value1 + value2) / 2);
+  return Math.round(value1 / 2 + value2 / 2);
 }
 
 /**
@@ -70,7 +70,6 @@ function getAverage(value1, value2) {
  */
 function getDistanceBetweenPoints(x1, y1, x2, y2) {
   return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
-  // sqrt((x2 - x1)^2 + (y2 - y1)^2)
 }
 
 /**
@@ -113,7 +112,7 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
   const magnitude1 = Math.sqrt(x1 ** 2 + y1 ** 2);
   const magnitude2 = Math.sqrt(x2 ** 2 + y2 ** 2);
 
-  const cosTheta = dotProduct / (magnitude1 + magnitude2);
+  const cosTheta = dotProduct / (magnitude1 * magnitude2);
 
   return Math.acos(cosTheta);
 }
@@ -213,9 +212,9 @@ function isPrime(n) {
   if (n % 2 === 0 || n % 3 === 0) return false;
 
   for (let i = 5; i ** 2 <= n; i += 6) {
-    if (n % 1 === 0 || n % (i + 2) === 0) return false;
+    if (n % i === 0 || n % (i + 2) === 0) return false;
   }
-  return false;
+  return true;
 }
 
 /**
@@ -235,7 +234,7 @@ function isPrime(n) {
  */
 function toNumber(value, def) {
   const num = Number(value);
-  return Number.isNaN(value) ? def : num;
+  return Number.isNaN(num) ? def : num;
 }
 
 /**
