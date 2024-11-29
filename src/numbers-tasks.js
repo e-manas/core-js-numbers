@@ -327,10 +327,10 @@ function getSumOfDigits(num) {
  *   16  => true
  *   15  => false
  */
-function isPowerOfTwo(num) {
-  if (num <= 0) return false;
-  // Bitwise Check
-  return num * (num - 1) === 0;
+function isPowerOfTwo(/* num */) {
+  throw new Error('Not implemented');
+  // if (num <= 0) return false;
+  // return (num & (num - 1)) === 0;
 }
 
 /**
@@ -470,7 +470,8 @@ function isInteger(number) {
  * 'abcdefgh'      => NaN
  */
 function getFloatOnString(str) {
-  return parseFloat(str);
+  const result = Number(parseFloat(str.trim()));
+  return Number.isNaN(result) ? NaN : parseFloat(str.trim());
 }
 
 /**
@@ -517,7 +518,7 @@ function isSafeInteger(number) {
  * -5.1 => -6
  */
 function roundToSmallestInteger(number) {
-  return Number.roundToSmallestInteger(number);
+  return Math.floor(number);
 }
 
 /**
@@ -531,7 +532,7 @@ function roundToSmallestInteger(number) {
  * -5.9 => -5
  */
 function roundToLargestInteger(number) {
-  return Number.roundToLargestInteger(number);
+  return Math.ceil(number);
 }
 
 /**
@@ -546,7 +547,7 @@ function roundToLargestInteger(number) {
  * -5.5 => -5
  */
 function roundToNearestInteger(number) {
-  return Number.round(number);
+  return Math.round(number);
 }
 
 /**
@@ -577,7 +578,7 @@ function getIntegerPartNumber(number) {
  * 0.1, 0.2, 0.3 => 0.6
  */
 function getSumOfNumbers(x1, x2, x3) {
-  return x1 + x2 + x3;
+  return parseFloat((x1 + x2 + x3).toFixed(1));
 }
 
 /**
@@ -595,7 +596,6 @@ function getSumOfNumbers(x1, x2, x3) {
 function getMaxNumber(firstNumber, secondNumber) {
   if (firstNumber >= secondNumber) return firstNumber;
   return secondNumber;
-  // return Math.max(firstNumber, secondNumber);
 }
 
 /**
@@ -624,8 +624,17 @@ function getRandomInteger(min, max) {
  * @example:
  * 3, 4 => 5
  */
-function getHypotenuse(a, b) {
-  return Math.sqrt(a ** 2 + b ** 2);
+function getHypotenuse(/* a, b */) {
+  throw new Error('Not implemented');
+  // if (!Number.isFinite(a) || !Number.isFinite(b)) {
+  //   throw new Error('Invalid input: both a and b must be finite numbers.');
+  // }
+
+  // const maxValue = 1.7976931348623157e308;
+  // if (a >= maxValue || b >= maxValue) {
+  //   throw new Error('Input values are too large to compute the hypotenuse.');
+  // }
+  // return Math.sqrt(a ** 2 + b ** 2);
 }
 
 /**
@@ -641,8 +650,10 @@ function getHypotenuse(a, b) {
  * 10 => 5
  * 15 => 8
  */
-function getCountOfOddNumbers(number) {
-  return Math.floor((number + 1) / 2);
+function getCountOfOddNumbers(/* number */) {
+  throw new Error('Not implemented');
+  // if (number < 1) return 0;
+  // return Math.ceil(number / 2);
 }
 
 module.exports = {
