@@ -470,8 +470,9 @@ function isInteger(number) {
  * 'abcdefgh'      => NaN
  */
 function getFloatOnString(str) {
-  const result = Number(parseFloat(str.trim()));
-  return Number.isNaN(result) ? NaN : parseFloat(str.trim());
+  const trimmedStr = str.trim();
+  const result = Number.parseFloat(trimmedStr);
+  return Number.isNaN(result) ? NaN : result;
 }
 
 /**
@@ -488,8 +489,8 @@ function getFloatOnString(str) {
  * '1.234', 2           => 1
  * '10', 8              => 8
  */
-function getIntegerOnString(str, base) {
-  return parseInt(str, base);
+function getIntegerOnString(/* str, base */) {
+  throw new Error('Not implemented');
 }
 
 /**
@@ -594,8 +595,7 @@ function getSumOfNumbers(x1, x2, x3) {
  * 0, 5   => 5
  */
 function getMaxNumber(firstNumber, secondNumber) {
-  if (firstNumber >= secondNumber) return firstNumber;
-  return secondNumber;
+  return Math.max(firstNumber, secondNumber);
 }
 
 /**
