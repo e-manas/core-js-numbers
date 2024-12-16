@@ -327,10 +327,11 @@ function getSumOfDigits(num) {
  *   16  => true
  *   15  => false
  */
-function isPowerOfTwo(/* num */) {
-  throw new Error('Not implemented');
-  // if (num <= 0) return false;
-  // return (num & (num - 1)) === 0;
+function isPowerOfTwo(num) {
+  if (typeof num !== 'number' || num <= 0 || !Number.isFinite(num)) {
+    return false;
+  }
+  return Math.log2(num) % 1 === 0;
 }
 
 /**
@@ -642,10 +643,12 @@ function getHypotenuse(a, b) {
  * 10 => 5
  * 15 => 8
  */
-function getCountOfOddNumbers(/* number */) {
-  throw new Error('Not implemented');
-  // if (number < 1) return 0;
-  // return Math.ceil(number / 2);
+function getCountOfOddNumbers(number) {
+  if (typeof number !== 'number' || !Number.isFinite(number)) {
+    throw new Error('Input must be a non-negative finite number.');
+  }
+  if (number >= 0) return Math.floor((number + 1) / 2);
+  return Math.abs(Math.ceil((number - 1) / 2));
 }
 
 module.exports = {
