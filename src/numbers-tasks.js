@@ -470,9 +470,8 @@ function isInteger(number) {
  * 'abcdefgh'      => NaN
  */
 function getFloatOnString(str) {
-  const trimmedStr = str.trim();
-  const result = Number.parseFloat(trimmedStr);
-  return Number.isNaN(result) ? NaN : result;
+  if (Number.isNaN(Number.parseFloat(str))) return NaN;
+  return parseFloat(str);
 }
 
 /**
@@ -489,8 +488,10 @@ function getFloatOnString(str) {
  * '1.234', 2           => 1
  * '10', 8              => 8
  */
-function getIntegerOnString(/* str, base */) {
-  throw new Error('Not implemented');
+function getIntegerOnString(str, base) {
+  const parsed = Number.parseInt(str, base);
+  if (Number.isNaN(parsed)) return NaN;
+  return parsed;
 }
 
 /**
@@ -624,17 +625,8 @@ function getRandomInteger(min, max) {
  * @example:
  * 3, 4 => 5
  */
-function getHypotenuse(/* a, b */) {
-  throw new Error('Not implemented');
-  // if (!Number.isFinite(a) || !Number.isFinite(b)) {
-  //   throw new Error('Invalid input: both a and b must be finite numbers.');
-  // }
-
-  // const maxValue = 1.7976931348623157e308;
-  // if (a >= maxValue || b >= maxValue) {
-  //   throw new Error('Input values are too large to compute the hypotenuse.');
-  // }
-  // return Math.sqrt(a ** 2 + b ** 2);
+function getHypotenuse(a, b) {
+  return Math.hypot(a, b);
 }
 
 /**
